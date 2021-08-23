@@ -4,9 +4,10 @@ ls $GITHUB_WORKSPACE
 
 mount=""
 if [ -n "$3" ] || [ -n "$4" ]; then
-  config_dir="$GITHUB_WORKSPACE/$(dirname $3)"
-  echo $config_dir
-  ls -la $config_dir
+  config_dir="$GITHUB_WORKSPACE"
+  # config_dir="$GITHUB_WORKSPACE/$(dirname $3)"
+  # echo $config_dir
+  # ls -la $config_dir
   mount="-v /var/run/docker.sock:/var/run/docker.sock --mount type=bind,src=$config_dir,dst=/etc/aerospike"
 fi
 
